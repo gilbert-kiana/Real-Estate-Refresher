@@ -1,0 +1,14 @@
+.homepage{
+    display: flex;
+    
+
+    .textContainer{
+        flex:3;
+        background-color: black;
+    }
+
+    .imgContainer{
+        flex:2;
+        background-color: #fcf5f3
+    }
+}
