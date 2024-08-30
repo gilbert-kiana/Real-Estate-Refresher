@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt"
-import prisma from "../lib/prisma";
+import prisma from "../lib/prisma.js"
 
 export const register =async (req,res)=>{
     const {username,email,password} = req.body
