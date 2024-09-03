@@ -1,9 +1,8 @@
 import "./register.scss";
 import { Link,useNavigate } from "react-router-dom";
-import axios from "axios"
 import {useState} from "react"
-
-
+import axios from "axios"
+import apiRequest from "../../lib/apiRequest";
 
 function Register() {
   const [error, setError] = useState("");
@@ -30,20 +29,22 @@ function Register() {
 
       navigate("/login");
     } catch (err) {
-      setError(err.response.data.message);
+      console.log(err.response.data)
+      setError(err.message);
     } finally {
       setIsLoading(false);
     }
   }
   return (
-    <div className="register">
+    <div className="registerPage">
       <div className="formContainer">
-        <form>
+        <form onSubmit={handleSubmit}>
           <h1>Create an Account</h1>
           <input name="username" type="text" placeholder="Username" />
           <input name="email" type="text" placeholder="Email" />
           <input name="password" type="password" placeholder="Password" />
-          <button >Register</button>
+          <button disabled={isLoading} >Register</button>
+          {error && <span>{error}</span>}
           <Link to="/login">Do you have an account?</Link>
         </form>
       </div>
